@@ -30,6 +30,9 @@ export class UserService {
         localStorage.setItem('currentUser', `${user.email}`);
         localStorage.setItem('token', `${token}`);
         console.log(response, token);
+        this.currentUser = user.email;
+        this.searchSubject.next(this.currentUser);
+        this.router.navigate(['/categories']);
       }, err => console.log(err));
   }
 
